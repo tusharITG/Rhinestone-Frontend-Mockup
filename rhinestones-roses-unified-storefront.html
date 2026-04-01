@@ -1,0 +1,2592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhinestones and Roses — Blooms, Boutique & Gifts</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   RHINESTONES & ROSES — UNIFIED STOREFRONT
+   Theme-matched to current Shopify store
+   ============================================ */
+
+:root {
+  --pink-primary: #D4738A;
+  --pink-light: #FDF2F4;
+  --pink-medium: #F0C4CF;
+  --pink-dark: #B85670;
+  --dark: #2C2C2C;
+  --dark-soft: #444;
+  --text: #333;
+  --text-light: #666;
+  --text-muted: #999;
+  --bg: #FFFFFF;
+  --bg-warm: #FAF7F5;
+  --bg-cream: #FBF9F7;
+  --border: #E8E4E1;
+  --border-light: #F0EDEA;
+  --success: #2E7D52;
+  --success-light: #E8F5EE;
+  --error: #C0392B;
+  --error-light: #FDEDEC;
+  --info: #2969B0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
+  --shadow-hover: 0 8px 25px rgba(0,0,0,0.12);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --transition: 0.25s ease;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-accent: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Lato', -apple-system, sans-serif;
+  --max-width: 1200px;
+  --nav-height: 70px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.view-hidden { display: none !important; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+input, textarea, select {
+  font-family: var(--font-body);
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  width: 100%;
+  outline: none;
+  transition: border-color var(--transition);
+  color: var(--text);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--pink-primary);
+  box-shadow: 0 0 0 3px rgba(212,115,138,0.1);
+}
+
+textarea { resize: vertical; min-height: 80px; }
+
+/* ---- ANNOUNCEMENT BAR ---- */
+.announcement-bar {
+  background: var(--dark);
+  color: #fff;
+  text-align: center;
+  padding: 9px 20px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+
+/* ---- LOCATION BAR ---- */
+.location-bar {
+  background: var(--bg-warm);
+  text-align: center;
+  padding: 6px 20px;
+  font-size: 11px;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border-light);
+  letter-spacing: 0.3px;
+}
+.location-bar span { margin: 0 20px; }
+
+/* ---- NAVBAR ---- */
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 40px;
+}
+.navbar-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+}
+.nav-logo img {
+  height: 55px;
+  width: auto;
+  cursor: pointer;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dark);
+  transition: color var(--transition);
+  padding: 8px 0;
+  position: relative;
+}
+.nav-links a:hover { color: var(--pink-primary); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--pink-primary);
+  transition: width var(--transition);
+}
+.nav-links a:hover::after { width: 100%; }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.nav-icon {
+  position: relative;
+  cursor: pointer;
+  color: var(--dark);
+  transition: color var(--transition);
+}
+.nav-icon:hover { color: var(--pink-primary); }
+.nav-icon svg { width: 22px; height: 22px; }
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--pink-primary);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.cart-badge.empty { display: none; }
+
+/* ---- CONTENT AREA ---- */
+.page-content {
+  min-height: 60vh;
+}
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ---- SECTION HEADERS ---- */
+.section-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.section-header p {
+  font-size: 15px;
+  color: var(--text-light);
+}
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 28px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--dark);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn-pink {
+  background: var(--pink-primary);
+  color: #fff;
+}
+.btn-pink:hover {
+  background: var(--pink-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--dark);
+  border: 1.5px solid var(--dark);
+}
+.btn-outline:hover {
+  background: var(--dark);
+  color: #fff;
+}
+.btn-lg {
+  padding: 16px 36px;
+  font-size: 14px;
+  width: 100%;
+}
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+}
+
+/* ---- HERO ---- */
+.hero {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(44,44,44,0.55) 0%, rgba(44,44,44,0.25) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 650px;
+  padding: 20px;
+}
+.hero-content h1 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.hero-content p {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  opacity: 0.95;
+}
+.hero-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+.hero .btn { min-width: 160px; }
+.hero .btn-outline { border-color: #fff; color: #fff; }
+.hero .btn-outline:hover { background: #fff; color: var(--dark); }
+
+/* ---- PRODUCT GRID ---- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.product-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border);
+}
+.product-card-img {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--pink-light);
+}
+.product-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.product-card:hover .product-card-img img { transform: scale(1.05); }
+.product-card-info {
+  padding: 14px 16px;
+}
+.product-card-info h4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.product-card-info .price {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* ---- CATEGORY CARDS ---- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.category-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4/3;
+  transition: all var(--transition);
+}
+.category-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.category-card:hover img { transform: scale(1.05); }
+.category-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+}
+.category-card-overlay h3 {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* ---- OCCASIONS ROW ---- */
+.occasions-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.occasion-badge {
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+.occasion-badge:hover { transform: translateY(-3px); }
+.occasion-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--pink-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  font-size: 28px;
+  transition: background var(--transition);
+}
+.occasion-badge:hover .occasion-circle { background: var(--pink-medium); }
+.occasion-badge span {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+
+/* ---- LOCATION CARDS ---- */
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+.location-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  text-align: center;
+}
+.location-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: var(--dark);
+}
+.location-card p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+.location-card .phone {
+  color: var(--pink-primary);
+  font-weight: 600;
+  margin-top: 8px;
+  display: block;
+}
+
+/* ---- PERKS BANNER ---- */
+.perks-banner {
+  background: var(--pink-light);
+  border: 1px solid var(--pink-medium);
+  border-radius: var(--radius-lg);
+  padding: 20px 30px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--dark);
+}
+.perks-banner strong { color: var(--pink-primary); }
+
+/* ---- PRODUCT PAGE LAYOUT ---- */
+.product-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.product-gallery {}
+.product-main-img {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--pink-light);
+  aspect-ratio: 1;
+  margin-bottom: 12px;
+}
+.product-main-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-thumbs {
+  display: flex;
+  gap: 10px;
+}
+.product-thumb {
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+.product-thumb:hover, .product-thumb.active { border-color: var(--pink-primary); }
+.product-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-details {}
+.product-details h1 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.product-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-light);
+  margin-bottom: 14px;
+}
+.product-rating .stars { color: #F5A623; }
+.product-desc {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+/* ---- FULFILLMENT TOGGLE ---- */
+.fulfillment-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.fulfillment-option {
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
+}
+.fulfillment-option:hover { border-color: var(--pink-medium); }
+.fulfillment-option.active {
+  border-color: var(--pink-primary);
+  background: var(--pink-light);
+}
+.fulfillment-option .icon { font-size: 20px; margin-bottom: 4px; }
+.fulfillment-option .label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark);
+  display: block;
+}
+.fulfillment-option .sublabel {
+  font-size: 11px;
+  color: var(--text-light);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ---- FORM GROUPS ---- */
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.form-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.zip-result {
+  margin-top: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+}
+.zip-result.success {
+  background: var(--success-light);
+  color: var(--success);
+  border: 1px solid #B7DFC9;
+}
+.zip-result.error {
+  background: var(--error-light);
+  color: var(--error);
+  border: 1px solid #F5C6CB;
+}
+
+/* ---- CALENDAR ---- */
+.calendar {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-warm);
+  border-bottom: 1px solid var(--border-light);
+}
+.calendar-header h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+}
+.calendar-day-name {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  padding: 10px 0;
+}
+.calendar-day {
+  text-align: center;
+  padding: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  margin: 2px;
+}
+.calendar-day:hover:not(.disabled):not(.empty) { background: var(--pink-light); }
+.calendar-day.selected { background: var(--pink-primary); color: #fff; font-weight: 600; }
+.calendar-day.today { border: 2px solid var(--success); }
+.calendar-day.disabled {
+  color: var(--text-muted);
+  opacity: 0.4;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+.calendar-day.empty { cursor: default; }
+
+/* ---- CHAR COUNTER ---- */
+.char-counter {
+  text-align: right;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ---- QUANTITY STEPPER ---- */
+.qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.qty-stepper button {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--dark);
+  transition: background var(--transition);
+}
+.qty-stepper button:hover { background: var(--bg-warm); }
+.qty-stepper .qty-value {
+  width: 40px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  line-height: 36px;
+}
+
+/* ---- ADD TO CART ---- */
+.add-to-cart-area {
+  margin-top: 20px;
+}
+.add-to-cart-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.secure-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+/* ---- CROSS-SELL ---- */
+.cross-sell {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-light);
+}
+.cross-sell-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.cross-sell-card {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition);
+}
+.cross-sell-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.cross-sell-card-img {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--pink-light);
+}
+.cross-sell-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.cross-sell-card-info {
+  padding: 10px 12px;
+}
+.cross-sell-card-info h5 {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.cross-sell-card-info .price {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.quick-add-btn {
+  width: 100%;
+  padding: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: var(--dark);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.quick-add-btn:hover { background: var(--pink-primary); }
+
+/* ---- SHIPPING INFO ---- */
+.shipping-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: var(--bg-warm);
+  border-radius: var(--radius-md);
+}
+.shipping-info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text);
+}
+.shipping-info-item .icon { font-size: 18px; }
+
+/* ---- CART PAGE ---- */
+.cart-page { padding: 40px 0; }
+.cart-page h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.cart-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--pink-light);
+}
+.cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
+.cart-item-info h4 { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+.cart-item-info .badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.badge-flower { background: var(--pink-light); color: var(--pink-primary); }
+.badge-gift { background: #F0F0F0; color: var(--text-light); }
+.cart-item-price { font-size: 14px; font-weight: 600; white-space: nowrap; }
+.cart-item-remove {
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  transition: color var(--transition);
+}
+.cart-item-remove:hover { color: var(--error); }
+
+/* ---- DELIVERY OPTIONS ---- */
+.delivery-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 24px 0;
+}
+.delivery-option {
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.delivery-option:hover { border-color: var(--pink-medium); }
+.delivery-option.active { border-color: var(--pink-primary); background: var(--pink-light); }
+.delivery-option .icon { font-size: 22px; }
+.delivery-option .label { font-weight: 600; font-size: 14px; }
+.delivery-option .sublabel { font-size: 12px; color: var(--text-light); }
+
+/* ---- CART SUMMARY ---- */
+.cart-summary {
+  background: var(--bg-warm);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-top: 24px;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+.summary-row.total {
+  border-top: 2px solid var(--border);
+  margin-top: 8px;
+  padding-top: 12px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* ---- FULFILLMENT DECISION (F6 HERO) ---- */
+.fulfillment-decision {
+  background: var(--pink-light);
+  border: 2px solid var(--pink-medium);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin: 24px 0;
+}
+.fulfillment-decision h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.fulfillment-decision > p {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+.fulfillment-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.fulfillment-choice {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.fulfillment-choice:hover { border-color: var(--pink-medium); }
+.fulfillment-choice.active { border-color: var(--pink-primary); box-shadow: 0 0 0 3px rgba(212,115,138,0.15); }
+.fulfillment-choice .choice-icon { font-size: 24px; margin-bottom: 8px; }
+.fulfillment-choice .choice-label { font-weight: 700; font-size: 14px; color: var(--dark); display: block; margin-bottom: 6px; }
+.fulfillment-choice .choice-desc { font-size: 12px; color: var(--text-light); line-height: 1.5; }
+.fulfillment-choice .choice-fee { font-size: 12px; color: var(--pink-primary); font-weight: 600; margin-top: 8px; display: block; }
+
+/* ---- INFO BANNER ---- */
+.info-banner {
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+.info-banner.pink { background: var(--pink-light); border: 1px solid var(--pink-medium); color: var(--pink-dark); }
+.info-banner.green { background: var(--success-light); border: 1px solid #B7DFC9; color: var(--success); }
+.info-banner.blue { background: #EDF2F9; border: 1px solid #C5D5E8; color: var(--info); }
+.info-banner .banner-icon { font-size: 18px; flex-shrink: 0; }
+
+/* ---- CHECKOUT PAGE ---- */
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  padding: 40px 0;
+  align-items: start;
+}
+.checkout-form {}
+.checkout-section {
+  margin-bottom: 30px;
+}
+.checkout-section h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: var(--dark);
+}
+.checkout-section .bordered-section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+.flower-section { border-left: 3px solid var(--pink-primary) !important; }
+.gift-section { border-left: 3px solid var(--text-muted) !important; }
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.form-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+/* ORDER SUMMARY SIDEBAR */
+.order-summary {
+  background: var(--bg-warm);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  position: sticky;
+  top: 90px;
+}
+.order-summary h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.order-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.order-item-img {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--pink-light);
+}
+.order-item-img img { width: 100%; height: 100%; object-fit: cover; }
+.order-item-info { flex: 1; }
+.order-item-info h5 { font-size: 13px; font-weight: 500; margin-bottom: 2px; }
+.order-item-info .meta { font-size: 11px; color: var(--text-muted); }
+.order-item-price { font-size: 13px; font-weight: 600; white-space: nowrap; }
+
+.delivery-note {
+  font-size: 12px;
+  color: var(--text-light);
+  background: var(--pink-light);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ---- CONFIRMATION PAGE ---- */
+.confirmation-banner {
+  background: var(--success-light);
+  border: 1px solid #A8D5BA;
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.confirmation-banner .check {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+.confirmation-banner h2 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--success);
+  margin-bottom: 8px;
+}
+.confirmation-banner p {
+  font-size: 14px;
+  color: var(--text);
+}
+.confirmation-banner .order-num {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.notification-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 24px 0;
+}
+.notification-card .bell { font-size: 28px; }
+.notification-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.notification-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+.whats-next {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+.whats-next-item {
+  font-size: 14px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.whats-next-item .icon { font-size: 18px; }
+
+/* ---- UPSELL BANNER ---- */
+.upsell-banner {
+  background: var(--pink-light);
+  border: 1px solid var(--pink-medium);
+  border-radius: var(--radius-md);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+.upsell-banner p { font-size: 14px; color: var(--dark); }
+.upsell-banner a { color: var(--pink-primary); font-weight: 600; cursor: pointer; }
+
+/* ---- DELIVERY DETAILS PREVIEW ---- */
+.delivery-preview {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-top: 16px;
+}
+.delivery-preview h4 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.delivery-preview-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  font-size: 13px;
+}
+.delivery-preview-row .label { color: var(--text-light); }
+.delivery-preview-row .value { font-weight: 500; color: var(--dark); }
+.card-message-preview {
+  background: var(--bg-warm);
+  border-left: 3px solid var(--pink-primary);
+  padding: 10px 14px;
+  margin-top: 8px;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text);
+}
+
+/* ---- PICKUP OPTIONS ---- */
+.pickup-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.pickup-option {
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
+}
+.pickup-option:hover { border-color: var(--pink-medium); }
+.pickup-option.active { border-color: var(--pink-primary); background: var(--pink-light); }
+.pickup-option .store-name { font-weight: 600; font-size: 13px; display: block; margin-bottom: 4px; }
+.pickup-option .store-addr { font-size: 11px; color: var(--text-light); }
+
+/* ---- TOAST ---- */
+.toast-notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--dark);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-lg);
+  max-width: 350px;
+}
+.toast-notification.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- SECTION SPACING ---- */
+.section {
+  padding: 56px 0;
+}
+.section-alt { background: var(--bg-warm); }
+.section-pink { background: var(--pink-light); }
+
+/* ---- FOOTER ---- */
+.site-footer {
+  background: var(--dark);
+  color: #fff;
+  padding: 48px 40px 24px;
+}
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 30px;
+}
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #fff;
+}
+.footer-col a {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 8px;
+  transition: color var(--transition);
+}
+.footer-col a:hover { color: #fff; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+}
+.social-icons { display: flex; gap: 16px; }
+.social-icons a { color: rgba(255,255,255,0.5); transition: color var(--transition); }
+.social-icons a:hover { color: #fff; }
+.social-icons svg { width: 20px; height: 20px; }
+
+/* ---- IMAGE PLACEHOLDER ---- */
+.img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--pink-light);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-placeholder svg { width: 40px; height: 40px; }
+
+/* ---- PAYMENT FIELDS ---- */
+.payment-fields {}
+.card-field {
+  background: #f9f9f9;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+/* ---- MISC ---- */
+.text-center { text-align: center; }
+.mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; }
+.mt-8 { margin-top: 32px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
+.mb-8 { margin-bottom: 32px; }
+
+.section-divider {
+  height: 1px;
+  background: var(--border-light);
+  margin: 40px 0;
+}
+
+/* ---- SPLIT FULFILLMENT GROUPS ---- */
+.fulfillment-group {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 12px;
+}
+.fulfillment-group.flowers { border-left: 3px solid var(--pink-primary); }
+.fulfillment-group.gifts { border-left: 3px solid var(--text-muted); }
+.fulfillment-group-header {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- ANNOUNCEMENT BAR                              -->
+<!-- ============================================ -->
+<div class="announcement-bar">
+  Free local delivery on orders over $75 &nbsp;|&nbsp; Serving Fort Wayne & North Manchester
+</div>
+
+<!-- ============================================ -->
+<!-- LOCATION BAR                                  -->
+<!-- ============================================ -->
+<div class="location-bar">
+  <span>1302 SR-114 W, North Manchester, IN 46962 • (260) 982-7682</span>
+  <span>|</span>
+  <span>10910 US-24 W, Fort Wayne, IN 46814 • (260) 434-2009</span>
+</div>
+
+<!-- ============================================ -->
+<!-- NAVBAR                                        -->
+<!-- ============================================ -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="nav-logo" onclick="navigateTo('homepage')">
+      <img src="https://cdn.shopify.com/s/files/1/0180/9945/files/Untitled_design_1.png?v=1686075513" alt="Rhinestones and Roses" onerror="this.style.display='none'">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" onclick="event.preventDefault();showToast('Would navigate to New Arrivals')">New Arrivals</a></li>
+      <li><a href="#" onclick="event.preventDefault();navigateTo('flower-product')">Flowers</a></li>
+      <li><a href="#" onclick="event.preventDefault();showToast('Would navigate to Clothing')">Clothing</a></li>
+      <li><a href="#" onclick="event.preventDefault();navigateTo('gift-product')">Gifts</a></li>
+      <li><a href="#" onclick="event.preventDefault();showToast('Would navigate to Weddings')">Weddings</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-icon" onclick="showToast('Search coming soon')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <div class="nav-icon" onclick="showToast('Account page coming soon')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="nav-icon" onclick="goToCart()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-badge empty" id="cartBadge">0</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- PAGE CONTENT                                  -->
+<!-- ============================================ -->
+<div class="page-content">
+
+<!-- ============================================ -->
+<!-- F1: HOMEPAGE                                  -->
+<!-- ============================================ -->
+<div data-page="homepage">
+
+  <!-- HERO -->
+  <div class="hero">
+    <img class="hero-img" src="https://cdn.shopify.com/s/files/1/0180/9945/files/Desktop_Web_Covers_2880_x_1620_px_15_de8ef6ee-f452-4036-ac4e-bcbd7e31cf43.png?v=1772589717&width=1600" alt="Rhinestones and Roses" onerror="this.parentElement.style.background='linear-gradient(135deg,#FDF2F4,#D4738A)'">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Blooms, Boutique & Gifts</h1>
+      <p>Your one-stop shop for flowers, fashion & thoughtful gifting — from our family to yours</p>
+      <div class="hero-btns">
+        <button class="btn btn-pink" onclick="navigateTo('flower-product')">Shop Flowers</button>
+        <button class="btn btn-outline" onclick="navigateTo('gift-product')">Shop Gifts</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOP BY CATEGORY -->
+  <div class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Shop by Category</h2>
+      </div>
+      <div class="category-grid">
+        <div class="category-card" onclick="navigateTo('flower-product')">
+          <img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-9_1.png.webp" alt="Fresh Flowers" onerror="this.src=''">
+          <div class="category-card-overlay"><h3>Fresh Flowers</h3></div>
+        </div>
+        <div class="category-card" onclick="showToast('Would navigate to Clothing')">
+          <img src="https://cdn.shopify.com/s/files/1/0180/9945/files/DSC_1789.jpg?v=1773262337&width=800" alt="Clothing" onerror="this.src=''">
+          <div class="category-card-overlay"><h3>Clothing &amp; Style</h3></div>
+        </div>
+        <div class="category-card" onclick="navigateTo('gift-product')">
+          <img src="https://cdn.shopify.com/s/files/1/0180/9945/files/Screenshot2025-02-05142121.png?v=1738783308&width=800" alt="Gifts" onerror="this.src=''">
+          <div class="category-card-overlay"><h3>Gifts &amp; Accessories</h3></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRENDING NOW -->
+  <div class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Trending Now</h2>
+      </div>
+      <div class="product-grid">
+        <div class="product-card" onclick="navigateTo('flower-product')">
+          <div class="product-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-9_1.png.webp" alt="Blooming Bliss Bouquet"></div>
+          <div class="product-card-info"><h4>Blooming Bliss Bouquet</h4><div class="price">$64.99</div></div>
+        </div>
+        <div class="product-card" onclick="navigateTo('gift-product')">
+          <div class="product-card-img"><img src="https://cdn.shopify.com/s/files/1/0180/9945/files/Screenshot2025-02-05142121.png?v=1738783308&width=600" alt="Capri Blue Candle"></div>
+          <div class="product-card-info"><h4>Capri Blue Volcano Candle</h4><div class="price">$29.99</div></div>
+        </div>
+        <div class="product-card" onclick="navigateTo('flower-product')">
+          <div class="product-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_website_products-13_1.png.webp" alt="Dozen Red Roses"></div>
+          <div class="product-card-info"><h4>Dozen Red Roses with Filler</h4><div class="price">$79.99</div></div>
+        </div>
+        <div class="product-card" onclick="navigateTo('gift-product')">
+          <div class="product-card-img"><img src="https://cdn.shopify.com/s/files/1/0180/9945/products/ba-necklace-tribe-gold-v1_800x800_f4660483-8231-485c-a098-fb32275e225f.webp?v=1678227837" alt="Bryan Anthonys Necklace"></div>
+          <div class="product-card-info"><h4>Bryan Anthonys Tribe Necklace</h4><div class="price">$48.00</div></div>
+        </div>
+        <div class="product-card" onclick="navigateTo('flower-product')">
+          <div class="product-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products_5.25_x_7.25_in_20__698931769163b.png.webp" alt="Heartwarming Hydrangeas"></div>
+          <div class="product-card-info"><h4>Heartwarming Hydrangeas</h4><div class="price">$54.99</div></div>
+        </div>
+        <div class="product-card" onclick="navigateTo('gift-product')">
+          <div class="product-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-14_1.png.webp" alt="Gift Basket"></div>
+          <div class="product-card-info"><h4>Gift Basket — Thinking of You</h4><div class="price">$49.99</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOP BY OCCASION -->
+  <div class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Shop by Occasion</h2>
+      </div>
+      <div class="occasions-row">
+        <div class="occasion-badge" onclick="showToast('Would navigate to Birthday collection')">
+          <div class="occasion-circle"></div>
+          <span>Birthday</span>
+        </div>
+        <div class="occasion-badge" onclick="showToast('Would navigate to Anniversary collection')">
+          <div class="occasion-circle"></div>
+          <span>Anniversary</span>
+        </div>
+        <div class="occasion-badge" onclick="showToast('Would navigate to Weddings')">
+          <div class="occasion-circle"></div>
+          <span>Wedding</span>
+        </div>
+        <div class="occasion-badge" onclick="showToast('Would navigate to Sympathy collection')">
+          <div class="occasion-circle"></div>
+          <span>Sympathy</span>
+        </div>
+        <div class="occasion-badge" onclick="showToast('Would navigate to Congratulations')">
+          <div class="occasion-circle"></div>
+          <span>Congratulations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO LOCATIONS -->
+  <div class="section section-pink">
+    <div class="container">
+      <div class="section-header">
+        <h2>Two Locations, One Family</h2>
+      </div>
+      <div class="locations-grid">
+        <div class="location-card">
+          <h3>North Manchester</h3>
+          <p>1302 State Road 114 W<br>North Manchester, IN 46962</p>
+          <span class="phone">(260) 982-7682</span>
+          <p style="margin-top:10px;font-size:13px;">Mon–Fri 10AM–6PM &nbsp;|&nbsp; Sat 10AM–3PM</p>
+        </div>
+        <div class="location-card">
+          <h3>Fort Wayne</h3>
+          <p>10910 US-24 W, Suite C<br>Fort Wayne, IN 46814</p>
+          <span class="phone">(260) 434-2009</span>
+          <p style="margin-top:10px;font-size:13px;">Mon–Fri 10AM–6PM &nbsp;|&nbsp; Sat 10AM–3PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROSE PERKS -->
+  <div class="section">
+    <div class="container">
+      <div class="perks-banner">
+        Join <strong>Rose Perks</strong> — Earn points on every purchase, including flowers! &nbsp;<a href="#" onclick="event.preventDefault();showToast('Would navigate to Rose Perks')" style="color:var(--pink-primary);font-weight:600;">Learn More →</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- END F1 -->
+
+
+<!-- ============================================ -->
+<!-- F2: FLOWER PRODUCT PAGE                       -->
+<!-- ============================================ -->
+<div data-page="flower-product" class="view-hidden">
+  <div class="section" style="padding-top:36px;">
+    <div class="container">
+      <div class="product-page">
+        <!-- LEFT: Gallery -->
+        <div class="product-gallery">
+          <div class="product-main-img">
+            <img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-9_1.png.webp" alt="Blooming Bliss Bouquet">
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb active"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-9_1.png.webp" alt=""></div>
+            <div class="product-thumb"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products_5.25_x_7.25_in_27__695e9c6ac0cb5.png.webp" alt=""></div>
+            <div class="product-thumb"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_website_products-75_1.png.webp" alt=""></div>
+          </div>
+        </div>
+        <!-- RIGHT: Details -->
+        <div class="product-details">
+          <h1>Blooming Bliss Bouquet</h1>
+          <div class="product-price">$64.99</div>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span> <span>4.8 (23 reviews)</span>
+          </div>
+          <p class="product-desc">A stunning hand-tied bouquet featuring seasonal blooms in soft pinks, whites, and greens. Perfect for birthdays, celebrations, or just because.</p>
+
+          <!-- Fulfillment Toggle -->
+          <div class="fulfillment-toggle">
+            <div class="fulfillment-option active" id="f2Delivery" onclick="toggleF2Fulfillment('delivery')">
+              <div class="icon"></div>
+              <span class="label">Local Delivery</span>
+              <span class="sublabel">Within 20 mi of our stores</span>
+            </div>
+            <div class="fulfillment-option" id="f2Pickup" onclick="toggleF2Fulfillment('pickup')">
+              <div class="icon"></div>
+              <span class="label">In-Store Pickup</span>
+              <span class="sublabel">North Manchester or Fort Wayne</span>
+            </div>
+          </div>
+
+          <!-- DELIVERY FIELDS -->
+          <div id="f2DeliveryFields">
+            <div class="form-group">
+              <label>Recipient's ZIP Code</label>
+              <input type="text" id="f2Zip" value="46962" placeholder="Enter recipient's ZIP code" maxlength="5" oninput="validateF2Zip()">
+              <div id="f2ZipResult" class="zip-result success">Delivery available! Rate: <strong>$9.99</strong> (North Manchester area)</div>
+            </div>
+
+            <div class="form-group">
+              <label>Delivery Date</label>
+              <div class="calendar" id="f2Calendar"></div>
+              <div class="form-hint">Same-day delivery available if ordered before 12:00 PM</div>
+            </div>
+
+            <div class="form-group">
+              <label>Card Message</label>
+              <textarea id="f2CardMsg" maxlength="250" placeholder="Write your card message (optional)" oninput="updateCharCount()">Happy Birthday Mom! Love, Sarah</textarea>
+              <div class="char-counter"><span id="f2CharCount">31</span> / 250</div>
+            </div>
+
+            <div class="form-group">
+              <label>Delivery Instructions</label>
+              <textarea id="f2DeliveryInstr" placeholder="Gate code, preferred time, leave at door..." rows="2"></textarea>
+            </div>
+          </div>
+
+          <!-- PICKUP FIELDS -->
+          <div id="f2PickupFields" style="display:none;">
+            <div class="form-group">
+              <label>Pickup Location</label>
+              <div class="pickup-options">
+                <div class="pickup-option active" onclick="selectPickup(this, 'North Manchester')">
+                  <span class="store-name">North Manchester</span>
+                  <span class="store-addr">1302 State Road 114 W</span>
+                </div>
+                <div class="pickup-option" onclick="selectPickup(this, 'Fort Wayne')">
+                  <span class="store-name">Fort Wayne</span>
+                  <span class="store-addr">10910 US-24 W, Suite C</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Pickup Date</label>
+              <div class="calendar" id="f2PickupCalendar"></div>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="form-group">
+            <label>Quantity</label>
+            <div class="qty-stepper">
+              <button onclick="changeQty('f2', -1)">−</button>
+              <span class="qty-value" id="f2Qty">1</span>
+              <button onclick="changeQty('f2', 1)">+</button>
+            </div>
+          </div>
+
+          <!-- Add to Cart -->
+          <div class="add-to-cart-area">
+            <button class="btn btn-primary add-to-cart-btn" onclick="addFlowerToCart()">Add to Cart — $64.99</button>
+            <div class="secure-note">Secure checkout &nbsp;|&nbsp; Local delivery or pickup only</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CROSS-SELL: Complete Your Gift -->
+      <div class="cross-sell">
+        <div class="section-header">
+          <h2>Complete Your Gift</h2>
+          <p>Add something extra to make it special</p>
+        </div>
+        <div class="cross-sell-grid">
+          <div class="cross-sell-card">
+            <div class="cross-sell-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_website_products-120_1.png.webp" alt="Plush Bear"></div>
+            <div class="cross-sell-card-info">
+              <h5>Plush Birthday Bear</h5>
+              <div class="price">$12.99</div>
+              <button class="quick-add-btn" onclick="quickAddGift('bear','Plush Birthday Bear',12.99,'https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_website_products-120_1.png.webp')">Quick Add</button>
+            </div>
+          </div>
+          <div class="cross-sell-card">
+            <div class="cross-sell-card-img"><img src="https://cdn.shopify.com/s/files/1/0180/9945/files/Screenshot2025-02-05142121.png?v=1738783308&width=400" alt="Candle"></div>
+            <div class="cross-sell-card-info">
+              <h5>Capri Blue Candle</h5>
+              <div class="price">$29.99</div>
+              <button class="quick-add-btn" onclick="quickAddGift('candle','Capri Blue Volcano Candle',29.99,'https://cdn.shopify.com/s/files/1/0180/9945/files/Screenshot2025-02-05142121.png?v=1738783308&width=400')">Quick Add</button>
+            </div>
+          </div>
+          <div class="cross-sell-card">
+            <div class="cross-sell-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-14_1.png.webp" alt="Gift Basket"></div>
+            <div class="cross-sell-card-info">
+              <h5>Thinking of You Basket</h5>
+              <div class="price">$49.99</div>
+              <button class="quick-add-btn" onclick="quickAddGift('basket','Gift Basket — Thinking of You',49.99,'https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-14_1.png.webp')">Quick Add</button>
+            </div>
+          </div>
+          <div class="cross-sell-card">
+            <div class="cross-sell-card-img"><img src="https://cdn.shopify.com/s/files/1/0180/9945/products/ba-necklace-tribe-gold-v1_800x800_f4660483-8231-485c-a098-fb32275e225f.webp?v=1678227837&width=400" alt="Necklace"></div>
+            <div class="cross-sell-card-info">
+              <h5>Bryan Anthonys Necklace</h5>
+              <div class="price">$48.00</div>
+              <button class="quick-add-btn" onclick="quickAddGift('necklace','Bryan Anthonys Tribe Necklace',48.00,'https://cdn.shopify.com/s/files/1/0180/9945/products/ba-necklace-tribe-gold-v1_800x800_f4660483-8231-485c-a098-fb32275e225f.webp?v=1678227837&width=400')">Quick Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- YOU MAY ALSO LIKE -->
+      <div class="cross-sell" style="border-top:none;margin-top:40px;">
+        <div class="section-header"><h2>You May Also Like</h2></div>
+        <div class="product-grid">
+          <div class="product-card" onclick="showToast('Would navigate to Dozen Red Roses')">
+            <div class="product-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_website_products-13_1.png.webp" alt=""></div>
+            <div class="product-card-info"><h4>Dozen Red Roses</h4><div class="price">$79.99</div></div>
+          </div>
+          <div class="product-card" onclick="showToast('Would navigate to Hydrangeas')">
+            <div class="product-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products_5.25_x_7.25_in_20__698931769163b.png.webp" alt=""></div>
+            <div class="product-card-info"><h4>Heartwarming Hydrangeas</h4><div class="price">$54.99</div></div>
+          </div>
+          <div class="product-card" onclick="showToast('Would navigate to Sunshine Delight')">
+            <div class="product-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/4/_/4_2.png.webp" alt=""></div>
+            <div class="product-card-info"><h4>Sunshine Delight</h4><div class="price">$44.99</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- END F2 -->
+
+
+<!-- ============================================ -->
+<!-- F3: GIFT PRODUCT PAGE                         -->
+<!-- ============================================ -->
+<div data-page="gift-product" class="view-hidden">
+  <div class="section" style="padding-top:36px;">
+    <div class="container">
+      <div class="product-page">
+        <div class="product-gallery">
+          <div class="product-main-img">
+            <img src="https://cdn.shopify.com/s/files/1/0180/9945/files/Screenshot2025-02-05142121.png?v=1738783308&width=800" alt="Capri Blue Candle">
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb active"><img src="https://cdn.shopify.com/s/files/1/0180/9945/files/Screenshot2025-02-05142121.png?v=1738783308&width=200" alt=""></div>
+          </div>
+        </div>
+        <div class="product-details">
+          <h1>Capri Blue Volcano Candle</h1>
+          <div class="product-price">$29.99</div>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span> <span>4.9 (47 reviews)</span>
+          </div>
+          <p class="product-desc">The iconic Capri Blue Volcano fragrance in a beautifully designed jar. Notes of tropical fruits and sugared citrus. A best-seller and the perfect gift.</p>
+
+          <div class="shipping-info">
+            <div class="shipping-info-item"><span class="icon"></span> Ships nationwide — $7.99 flat rate</div>
+            <div class="shipping-info-item"><span class="icon"></span> Local delivery available</div>
+            <div class="shipping-info-item"><span class="icon"></span> In-store pickup at North Manchester or Fort Wayne</div>
+          </div>
+
+          <div class="form-group">
+            <label>Quantity</label>
+            <div class="qty-stepper">
+              <button onclick="changeQty('f3', -1)">−</button>
+              <span class="qty-value" id="f3Qty">1</span>
+              <button onclick="changeQty('f3', 1)">+</button>
+            </div>
+          </div>
+
+          <div class="add-to-cart-area">
+            <button class="btn btn-primary add-to-cart-btn" onclick="addGiftToCart('candle','Capri Blue Volcano Candle',29.99,'https://cdn.shopify.com/s/files/1/0180/9945/files/Screenshot2025-02-05142121.png?v=1738783308&width=400')">Add to Cart — $29.99</button>
+            <div class="secure-note">Secure checkout &nbsp;|&nbsp; Ships nationwide or pickup in store</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CROSS-SELL: Pair with Flowers -->
+      <div class="cross-sell">
+        <div class="section-header">
+          <h2>Pair It With Flowers</h2>
+          <p>Make it extra special — add fresh flowers to your gift</p>
+        </div>
+        <div class="product-grid">
+          <div class="product-card" onclick="navigateTo('flower-product')">
+            <div class="product-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-9_1.png.webp" alt=""></div>
+            <div class="product-card-info"><h4>Blooming Bliss Bouquet</h4><div class="price">$64.99</div></div>
+          </div>
+          <div class="product-card" onclick="navigateTo('flower-product')">
+            <div class="product-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_website_products-75_1.png.webp" alt=""></div>
+            <div class="product-card-info"><h4>Simply Kind</h4><div class="price">$39.99</div></div>
+          </div>
+          <div class="product-card" onclick="navigateTo('flower-product')">
+            <div class="product-card-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products_5.25_x_7.25_in_27__695e9c6ac0cb5.png.webp" alt=""></div>
+            <div class="product-card-info"><h4>Cotton Candy Love</h4><div class="price">$54.99</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- END F3 -->
+
+
+<!-- ============================================ -->
+<!-- F4: CART — GIFTS ONLY                         -->
+<!-- ============================================ -->
+<div data-page="cart-gifts" class="view-hidden">
+  <div class="section cart-page">
+    <div class="container">
+      <h2>Your Cart (<span id="f4Count">2</span> items)</h2>
+      <div id="f4Items"></div>
+
+      <h3 style="font-size:16px;font-weight:600;margin:24px 0 12px;">Delivery Options</h3>
+      <div class="delivery-options">
+        <div class="delivery-option active" onclick="selectGiftDelivery(this,'ship')">
+          <span class="icon"></span>
+          <div><div class="label">Ship It ($7.99)</div><div class="sublabel">Delivered in 3–5 business days via USPS</div></div>
+        </div>
+        <div class="delivery-option" onclick="selectGiftDelivery(this,'local')">
+          <span class="icon"></span>
+          <div><div class="label">Local Delivery</div><div class="sublabel">Same-day or next-day in North Manchester & Fort Wayne area</div></div>
+        </div>
+        <div class="delivery-option" onclick="selectGiftDelivery(this,'pickup')">
+          <span class="icon"></span>
+          <div><div class="label">In-Store Pickup (Free)</div><div class="sublabel">Pick up at North Manchester or Fort Wayne</div></div>
+        </div>
+      </div>
+
+      <div class="cart-summary" id="f4Summary"></div>
+
+      <div style="margin-top:20px;">
+        <button class="btn btn-primary btn-lg" onclick="navigateTo('checkout-gifts')">Proceed to Checkout</button>
+      </div>
+
+      <div class="upsell-banner">
+        <p>Add fresh flowers to your order! Local delivery available.</p>
+        <a onclick="navigateTo('flower-product')">Browse Flowers →</a>
+      </div>
+    </div>
+  </div>
+</div><!-- END F4 -->
+
+
+<!-- ============================================ -->
+<!-- F5: CART — FLOWERS ONLY                       -->
+<!-- ============================================ -->
+<div data-page="cart-flowers" class="view-hidden">
+  <div class="section cart-page">
+    <div class="container">
+      <h2>Your Cart (<span id="f5Count">1</span> item)</h2>
+      <div id="f5Items"></div>
+
+      <div class="delivery-preview" id="f5DeliveryPreview"></div>
+
+      <div class="info-banner pink mt-6">
+        <span class="banner-icon"></span>
+        <span>Fresh flowers are available for <strong>local delivery</strong> and <strong>in-store pickup</strong> only. Nationwide shipping is not available for this order.</span>
+      </div>
+
+      <div class="cart-summary" id="f5Summary"></div>
+
+      <div style="margin-top:20px;">
+        <button class="btn btn-primary btn-lg" onclick="navigateTo('checkout-flowers')">Proceed to Checkout</button>
+      </div>
+
+      <div class="upsell-banner">
+        <p>Make it a gift bundle! Add something extra.</p>
+        <a onclick="navigateTo('gift-product')">Browse Gifts →</a>
+      </div>
+    </div>
+  </div>
+</div><!-- END F5 -->
+
+
+<!-- ============================================ -->
+<!-- F6: CART — MIXED (THE HERO SCREEN)            -->
+<!-- ============================================ -->
+<div data-page="cart-mixed" class="view-hidden">
+  <div class="section cart-page">
+    <div class="container">
+      <h2>Your Cart (<span id="f6Count">2</span> items)</h2>
+      <div id="f6Items"></div>
+
+      <!-- FULFILLMENT DECISION -->
+      <div class="fulfillment-decision">
+        <h3>How would you like your order fulfilled?</h3>
+        <p>Your cart contains fresh flowers, which can only be delivered locally or picked up in store.</p>
+        <div class="fulfillment-choices">
+          <div class="fulfillment-choice active" id="choiceTogether" onclick="selectMixedFulfillment('together')">
+            <div class="choice-icon"></div>
+            <span class="choice-label">Deliver Everything Together</span>
+            <span class="choice-desc">All items delivered locally or available for in-store pickup. Flowers and gifts arrive together.</span>
+            <span class="choice-fee">Delivery fee based on recipient ZIP code</span>
+          </div>
+          <div class="fulfillment-choice" id="choiceSplit" onclick="selectMixedFulfillment('split')">
+            <div class="choice-icon"></div>
+            <span class="choice-label">Ship Gifts, Deliver Flowers Separately</span>
+            <span class="choice-desc">We'll ship your gifts nationwide and deliver your flowers locally. Two separate deliveries, one checkout.</span>
+            <span class="choice-fee">Gift shipping: $7.99 + Flower delivery based on ZIP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="delivery-preview" id="f6DeliveryPreview"></div>
+
+      <div class="cart-summary" id="f6Summary"></div>
+
+      <div style="margin-top:20px;">
+        <button class="btn btn-primary btn-lg" id="f6CheckoutBtn" onclick="goToMixedCheckout()">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+</div><!-- END F6 -->
+
+
+<!-- ============================================ -->
+<!-- F7: CHECKOUT — GIFTS ONLY                     -->
+<!-- ============================================ -->
+<div data-page="checkout-gifts" class="view-hidden">
+  <div class="container">
+    <div class="checkout-layout">
+      <div class="checkout-form">
+        <h2 style="font-family:var(--font-display);font-size:26px;font-weight:500;margin-bottom:30px;">Checkout</h2>
+
+        <div class="checkout-section">
+          <h3>Contact Information</h3>
+          <div class="form-group"><label>Email</label><input type="email" value="sarah.h@gmail.com"></div>
+          <div class="form-group"><label>Phone (optional)</label><input type="tel" placeholder="(260) 555-0147"></div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Shipping Address</h3>
+          <div class="form-row"><div class="form-group"><label>First Name</label><input value="Sarah"></div><div class="form-group"><label>Last Name</label><input value="Hendricks"></div></div>
+          <div class="form-group"><label>Address</label><input value="789 College Ave"></div>
+          <div class="form-row-3"><div class="form-group"><label>City</label><input value="Indianapolis"></div><div class="form-group"><label>State</label><input value="IN"></div><div class="form-group"><label>ZIP</label><input value="46201"></div></div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Shipping Method</h3>
+          <div class="delivery-option active" style="cursor:default;">
+            <span class="icon"></span>
+            <div><div class="label">Standard Shipping — $7.99</div><div class="sublabel">3–5 business days via USPS</div></div>
+          </div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Payment</h3>
+          <div class="card-field">4242 4242 4242 4242</div>
+          <div class="form-row"><div class="card-field">04 / 28</div><div class="card-field">123</div></div>
+        </div>
+
+        <button class="btn btn-primary btn-lg" onclick="navigateTo('confirmation')" id="f7PlaceOrder">Complete Order — $81.42</button>
+      </div>
+
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div id="f7OrderItems"></div>
+        <div class="summary-row"><span>Subtotal</span><span id="f7Sub">$67.99</span></div>
+        <div class="summary-row"><span>Shipping</span><span>$7.99</span></div>
+        <div class="summary-row"><span>Tax</span><span>$5.44</span></div>
+        <div class="summary-row total"><span>Total</span><span id="f7Total">$81.42</span></div>
+      </div>
+    </div>
+  </div>
+</div><!-- END F7 -->
+
+
+<!-- ============================================ -->
+<!-- F8: CHECKOUT — FLOWERS ONLY                   -->
+<!-- ============================================ -->
+<div data-page="checkout-flowers" class="view-hidden">
+  <div class="container">
+    <div class="checkout-layout">
+      <div class="checkout-form">
+        <h2 style="font-family:var(--font-display);font-size:26px;font-weight:500;margin-bottom:30px;">Checkout</h2>
+
+        <div class="checkout-section">
+          <h3>Your Information (Sender)</h3>
+          <div class="form-row"><div class="form-group"><label>Your Name</label><input value="Sarah Hendricks"></div><div class="form-group"><label>Email</label><input value="sarah.h@gmail.com"></div></div>
+          <div class="form-group"><label>Phone</label><input value="(260) 555-0147"></div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Recipient Information</h3>
+          <div class="form-group"><label>Recipient Name</label><input value="Martha Hendricks"></div>
+          <div class="form-group"><label>Address</label><input value="1425 Oak Street"></div>
+          <div class="form-row-3"><div class="form-group"><label>City</label><input value="North Manchester"></div><div class="form-group"><label>State</label><input value="IN"></div><div class="form-group"><label>ZIP</label><input value="46962"></div></div>
+          <div class="zip-result success" style="margin-top:4px;">Delivery rate: <strong>$9.99</strong> (North Manchester area)</div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Delivery Details</h3>
+          <div class="form-group"><label>Delivery Date</label><div style="padding:10px 14px;background:var(--bg-warm);border-radius:var(--radius-sm);font-size:14px;font-weight:500;">Friday, April 4, 2026 &nbsp;<a href="#" onclick="event.preventDefault();showToast('Would open date picker')" style="color:var(--pink-primary);font-size:12px;">Change</a></div><div class="form-hint">Same-day delivery available for orders placed before 12:00 PM</div></div>
+          <div class="form-group"><label>Card Message</label><textarea>Happy Birthday Mom! Love, Sarah</textarea></div>
+          <div class="form-group"><label>Delivery Instructions</label><textarea rows="2" placeholder="Gate code, preferred time, leave at door...">Please leave at the front porch if no one answers</textarea></div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Payment</h3>
+          <div class="card-field">4242 4242 4242 4242</div>
+          <div class="form-row"><div class="card-field">04 / 28</div><div class="card-field">123</div></div>
+        </div>
+
+        <button class="btn btn-primary btn-lg" onclick="navigateTo('confirmation')">Complete Order — $80.18</button>
+      </div>
+
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div class="order-item">
+          <div class="order-item-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-9_1.png.webp" alt=""></div>
+          <div class="order-item-info"><h5>Blooming Bliss Bouquet</h5><div class="meta">Qty: 1</div></div>
+          <div class="order-item-price">$64.99</div>
+        </div>
+        <div class="summary-row"><span>Subtotal</span><span>$64.99</span></div>
+        <div class="summary-row"><span>Local Delivery</span><span>$9.99</span></div>
+        <div class="summary-row"><span>Tax</span><span>$5.20</span></div>
+        <div class="summary-row total"><span>Total</span><span>$80.18</span></div>
+        <div class="delivery-note">Delivery: Fri, April 4, 2026<br><em>"Happy Birthday Mom! Love, Sarah"</em></div>
+      </div>
+    </div>
+  </div>
+</div><!-- END F8 -->
+
+
+<!-- ============================================ -->
+<!-- F9: CHECKOUT — MIXED TOGETHER                 -->
+<!-- ============================================ -->
+<div data-page="checkout-mixed-together" class="view-hidden">
+  <div class="container">
+    <div class="checkout-layout">
+      <div class="checkout-form">
+        <h2 style="font-family:var(--font-display);font-size:26px;font-weight:500;margin-bottom:30px;">Checkout</h2>
+
+        <div class="checkout-section">
+          <h3>Your Information (Sender)</h3>
+          <div class="form-row"><div class="form-group"><label>Your Name</label><input value="Sarah Hendricks"></div><div class="form-group"><label>Email</label><input value="sarah.h@gmail.com"></div></div>
+          <div class="form-group"><label>Phone</label><input value="(260) 555-0147"></div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Recipient Information</h3>
+          <div class="form-group"><label>Recipient Name</label><input value="Martha Hendricks"></div>
+          <div class="form-group"><label>Address</label><input value="1425 Oak Street"></div>
+          <div class="form-row-3"><div class="form-group"><label>City</label><input value="North Manchester"></div><div class="form-group"><label>State</label><input value="IN"></div><div class="form-group"><label>ZIP</label><input value="46962"></div></div>
+          <div class="zip-result success" style="margin-top:4px;">Delivery rate: <strong>$9.99</strong> (North Manchester area)</div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Delivery Details</h3>
+          <div class="info-banner green mb-4"><span class="banner-icon"></span> All items will be delivered together</div>
+          <div class="form-group"><label>Delivery Date</label><div style="padding:10px 14px;background:var(--bg-warm);border-radius:var(--radius-sm);font-size:14px;font-weight:500;">Friday, April 4, 2026</div></div>
+          <div class="form-group"><label>Card Message</label><textarea>Happy Birthday Mom! Love, Sarah</textarea></div>
+          <div class="form-group"><label>Delivery Instructions</label><textarea rows="2" placeholder="Gate code, preferred time..."></textarea></div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Payment</h3>
+          <div class="card-field">4242 4242 4242 4242</div>
+          <div class="form-row"><div class="card-field">04 / 28</div><div class="card-field">123</div></div>
+        </div>
+
+        <button class="btn btn-primary btn-lg" onclick="navigateTo('confirmation')">Complete Order — $112.57</button>
+      </div>
+
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div class="order-item">
+          <div class="order-item-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-9_1.png.webp" alt=""></div>
+          <div class="order-item-info"><h5>Blooming Bliss Bouquet</h5><div class="meta">Qty: 1</div></div>
+          <div class="order-item-price">$64.99</div>
+        </div>
+        <div class="order-item">
+          <div class="order-item-img"><img src="https://cdn.shopify.com/s/files/1/0180/9945/files/Screenshot2025-02-05142121.png?v=1738783308&width=200" alt=""></div>
+          <div class="order-item-info"><h5>Capri Blue Volcano Candle</h5><div class="meta">Qty: 1</div></div>
+          <div class="order-item-price">$29.99</div>
+        </div>
+        <div class="summary-row"><span>Subtotal</span><span>$94.98</span></div>
+        <div class="summary-row"><span>Local Delivery</span><span>$9.99</span></div>
+        <div class="summary-row"><span>Tax</span><span>$7.60</span></div>
+        <div class="summary-row total"><span>Total</span><span>$112.57</span></div>
+        <div class="delivery-note">All items delivered together on Fri, April 4, 2026</div>
+      </div>
+    </div>
+  </div>
+</div><!-- END F9 -->
+
+
+<!-- ============================================ -->
+<!-- F10: CHECKOUT — MIXED SPLIT                   -->
+<!-- ============================================ -->
+<div data-page="checkout-mixed-split" class="view-hidden">
+  <div class="container">
+    <div class="checkout-layout">
+      <div class="checkout-form">
+        <h2 style="font-family:var(--font-display);font-size:26px;font-weight:500;margin-bottom:30px;">Checkout</h2>
+
+        <div class="checkout-section">
+          <h3>Your Information (Sender)</h3>
+          <div class="form-row"><div class="form-group"><label>Your Name</label><input value="Sarah Hendricks"></div><div class="form-group"><label>Email</label><input value="sarah.h@gmail.com"></div></div>
+          <div class="form-group"><label>Phone</label><input value="(260) 555-0147"></div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Flower Delivery</h3>
+          <div class="bordered-section flower-section">
+            <div class="form-group"><label>Recipient Name</label><input value="Martha Hendricks"></div>
+            <div class="form-group"><label>Address</label><input value="1425 Oak Street"></div>
+            <div class="form-row-3"><div class="form-group"><label>City</label><input value="North Manchester"></div><div class="form-group"><label>State</label><input value="IN"></div><div class="form-group"><label>ZIP</label><input value="46962"></div></div>
+            <div class="zip-result success" style="margin-top:4px;">Delivery rate: <strong>$9.99</strong></div>
+            <div class="form-group mt-4"><label>Delivery Date</label><div style="padding:10px 14px;background:var(--bg-warm);border-radius:var(--radius-sm);font-size:14px;font-weight:500;">Friday, April 4, 2026</div></div>
+            <div class="form-group"><label>Card Message</label><textarea>Happy Birthday Mom! Love, Sarah</textarea></div>
+            <div class="form-group"><label>Delivery Instructions</label><textarea rows="2" placeholder="Gate code, preferred time..."></textarea></div>
+          </div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Gift Shipping</h3>
+          <div class="bordered-section gift-section">
+            <div class="form-group"><label>Ship To Name</label><input value="Martha Hendricks"></div>
+            <div class="form-group"><label>Address</label><input value="1425 Oak Street"></div>
+            <div class="form-row-3"><div class="form-group"><label>City</label><input value="North Manchester"></div><div class="form-group"><label>State</label><input value="IN"></div><div class="form-group"><label>ZIP</label><input value="46962"></div></div>
+            <div class="delivery-option active" style="cursor:default;margin-top:12px;">
+              <span class="icon"></span>
+              <div><div class="label">Standard Shipping — $7.99</div><div class="sublabel">3–5 business days</div></div>
+            </div>
+            <div class="form-hint" style="margin-top:8px;">Gifts will be shipped separately from flowers</div>
+          </div>
+        </div>
+
+        <div class="checkout-section">
+          <h3>Payment</h3>
+          <div class="card-field">4242 4242 4242 4242</div>
+          <div class="form-row"><div class="card-field">04 / 28</div><div class="card-field">123</div></div>
+        </div>
+
+        <button class="btn btn-primary btn-lg" onclick="navigateTo('confirmation')">Complete Order — $120.56</button>
+      </div>
+
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div class="fulfillment-group flowers">
+          <div class="fulfillment-group-header">Flower Delivery</div>
+          <div class="order-item" style="border:none;padding:4px 0;">
+            <div class="order-item-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-9_1.png.webp" alt=""></div>
+            <div class="order-item-info"><h5>Blooming Bliss Bouquet</h5><div class="meta">Qty: 1</div></div>
+            <div class="order-item-price">$64.99</div>
+          </div>
+          <div class="summary-row" style="font-size:12px;"><span>Local Delivery</span><span>$9.99</span></div>
+          <div class="summary-row" style="font-size:12px;color:var(--text-muted);"><span>Delivering</span><span>Fri, April 4, 2026</span></div>
+        </div>
+        <div class="fulfillment-group gifts">
+          <div class="fulfillment-group-header">Gift Shipping</div>
+          <div class="order-item" style="border:none;padding:4px 0;">
+            <div class="order-item-img"><img src="https://cdn.shopify.com/s/files/1/0180/9945/files/Screenshot2025-02-05142121.png?v=1738783308&width=200" alt=""></div>
+            <div class="order-item-info"><h5>Capri Blue Volcano Candle</h5><div class="meta">Qty: 1</div></div>
+            <div class="order-item-price">$29.99</div>
+          </div>
+          <div class="summary-row" style="font-size:12px;"><span>Shipping</span><span>$7.99</span></div>
+          <div class="summary-row" style="font-size:12px;color:var(--text-muted);"><span>Est. arrival</span><span>3–5 business days</span></div>
+        </div>
+        <div class="summary-row"><span>Subtotal</span><span>$94.98</span></div>
+        <div class="summary-row"><span>Flower Delivery</span><span>$9.99</span></div>
+        <div class="summary-row"><span>Gift Shipping</span><span>$7.99</span></div>
+        <div class="summary-row"><span>Tax</span><span>$7.60</span></div>
+        <div class="summary-row total"><span>Total</span><span>$120.56</span></div>
+      </div>
+    </div>
+  </div>
+</div><!-- END F10 -->
+
+
+<!-- ============================================ -->
+<!-- F11: ORDER CONFIRMATION                       -->
+<!-- ============================================ -->
+<div data-page="confirmation" class="view-hidden">
+  <div class="section">
+    <div class="container" style="max-width:700px;">
+
+      <div class="confirmation-banner">
+        <div class="check"></div>
+        <h2>Thank you, Sarah!</h2>
+        <p>Your order has been placed.</p>
+        <p class="order-num" style="font-size:16px;margin-top:6px;">Order #RR-20260403-1047</p>
+        <p style="font-size:13px;color:var(--text-light);margin-top:8px;">A confirmation email has been sent to sarah.h@gmail.com</p>
+      </div>
+
+      <div class="order-summary" style="position:static;" id="f11Summary">
+        <h3>Order Details</h3>
+        <div class="order-item">
+          <div class="order-item-img"><img src="https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-9_1.png.webp" alt=""></div>
+          <div class="order-item-info"><h5>Blooming Bliss Bouquet</h5><div class="meta">Delivering to Martha Hendricks — Fri, April 4, 2026</div></div>
+          <div class="order-item-price">$64.99</div>
+        </div>
+        <div class="card-message-preview" style="margin:12px 0;">"Happy Birthday Mom! Love, Sarah"</div>
+      </div>
+
+      <div class="notification-card">
+        <div class="bell"></div>
+        <div>
+          <h4>We'll keep you updated!</h4>
+          <p>You'll receive a notification when your flowers are ready for delivery and when they've been delivered. Track your order anytime by logging in or checking your email.</p>
+        </div>
+      </div>
+
+      <div class="whats-next">
+        <div class="whats-next-item"><span class="icon"></span> Confirmation email sent to sarah.h@gmail.com</div>
+        <div class="whats-next-item"><span class="icon"></span> Delivery updates via email when your flowers are on their way</div>
+        <div class="whats-next-item"><span class="icon"></span> Recipient will NOT be notified — it's a surprise!</div>
+      </div>
+
+      <div style="text-align:center;margin-top:30px;">
+        <button class="btn btn-primary" onclick="resetAndGoHome()">Continue Shopping</button>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:12px;">Need to make changes? Contact us at (260) 982-7682</p>
+      </div>
+
+    </div>
+  </div>
+</div><!-- END F11 -->
+
+
+</div><!-- END PAGE CONTENT -->
+
+<!-- ============================================ -->
+<!-- FOOTER                                        -->
+<!-- ============================================ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#" onclick="event.preventDefault();navigateTo('flower-product')">Flowers</a>
+        <a href="#" onclick="event.preventDefault();showToast('Would navigate to Clothing')">Clothing</a>
+        <a href="#" onclick="event.preventDefault();navigateTo('gift-product')">Gifts</a>
+        <a href="#" onclick="event.preventDefault();showToast('Would navigate to New Arrivals')">New Arrivals</a>
+        <a href="#" onclick="event.preventDefault();showToast('Would navigate to Sale')">Sale</a>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <a href="#" onclick="event.preventDefault();showToast('Would navigate to Our Story')">Our Story</a>
+        <a href="#" onclick="event.preventDefault()">Locations</a>
+        <a href="#" onclick="event.preventDefault()">Wedding Consultations</a>
+        <a href="#" onclick="event.preventDefault()">Rose Perks</a>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a href="#" onclick="event.preventDefault()">Contact Us</a>
+        <a href="#" onclick="event.preventDefault()">Delivery Info</a>
+        <a href="#" onclick="event.preventDefault()">Shipping & Returns</a>
+        <a href="#" onclick="event.preventDefault()">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Rhinestones & Roses LLC &nbsp;|&nbsp; North Manchester & Fort Wayne, Indiana</span>
+      <div class="social-icons">
+        <a href="#" onclick="event.preventDefault()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="#" onclick="event.preventDefault()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================ -->
+<!-- JAVASCRIPT                                    -->
+<!-- ============================================ -->
+<script>
+// ============ STATE ============
+const state = {
+  currentPage: 'homepage',
+  cart: [],
+  fulfillmentChoice: 'together',
+  selectedZip: '46962',
+  deliveryRate: 9.99,
+  deliveryArea: 'North Manchester',
+  selectedDate: '2026-04-04',
+  cardMessage: 'Happy Birthday Mom! Love, Sarah',
+  deliveryInstructions: '',
+  pickupStore: 'North Manchester',
+  fulfillmentType: 'delivery',
+  giftDelivery: 'ship',
+  f2Qty: 1,
+  f3Qty: 1
+};
+
+const ZIP_RATES = {
+  '46962': { rate: 9.99, area: 'North Manchester' },
+  '46814': { rate: 12.99, area: 'Fort Wayne' },
+  '46992': { rate: 11.99, area: 'Wabash' },
+  '46982': { rate: 10.99, area: 'Silver Lake' },
+  '46750': { rate: 13.99, area: 'Huntington' }
+};
+
+// ============ NAVIGATION ============
+function navigateTo(page) {
+  document.querySelectorAll('[data-page]').forEach(el => el.classList.add('view-hidden'));
+  const target = document.querySelector(`[data-page="${page}"]`);
+  if (target) {
+    target.classList.remove('view-hidden');
+    state.currentPage = page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Render dynamic content
+    if (page === 'cart-gifts') renderGiftCart();
+    if (page === 'cart-flowers') renderFlowerCart();
+    if (page === 'cart-mixed') renderMixedCart();
+    if (page === 'checkout-gifts') renderGiftCheckout();
+  }
+  updateCartBadge();
+}
+
+// ============ TOAST ============
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'toast-notification';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.classList.add('visible'), 10);
+  setTimeout(() => { toast.classList.remove('visible'); setTimeout(() => toast.remove(), 300); }, 3000);
+}
+
+// ============ CART LOGIC ============
+function addToCart(item) {
+  const existing = state.cart.find(i => i.id === item.id);
+  if (existing) { existing.qty += item.qty || 1; }
+  else { state.cart.push({ ...item, qty: item.qty || 1 }); }
+  updateCartBadge();
+  showToast(item.name + ' added to cart!');
+}
+
+function removeFromCart(id) {
+  state.cart = state.cart.filter(i => i.id !== id);
+  updateCartBadge();
+  // Re-render current cart
+  const type = getCartType();
+  if (type === 'mixed') renderMixedCart();
+  else if (type === 'flowers-only') renderFlowerCart();
+  else if (type === 'gifts-only') renderGiftCart();
+  else if (state.cart.length === 0) {
+    showToast('Your cart is empty');
+    navigateTo('homepage');
+  }
+}
+
+function getCartType() {
+  const hasFlowers = state.cart.some(i => i.type === 'flower');
+  const hasGifts = state.cart.some(i => i.type === 'gift' || i.type === 'clothing');
+  if (hasFlowers && hasGifts) return 'mixed';
+  if (hasFlowers) return 'flowers-only';
+  return 'gifts-only';
+}
+
+function goToCart() {
+  if (state.cart.length === 0) {
+    showToast('Your cart is empty');
+    return;
+  }
+  const type = getCartType();
+  if (type === 'mixed') navigateTo('cart-mixed');
+  else if (type === 'flowers-only') navigateTo('cart-flowers');
+  else navigateTo('cart-gifts');
+}
+
+function updateCartBadge() {
+  const badge = document.getElementById('cartBadge');
+  const total = state.cart.reduce((s, i) => s + i.qty, 0);
+  badge.textContent = total;
+  badge.classList.toggle('empty', total === 0);
+}
+
+function getCartSubtotal() {
+  return state.cart.reduce((s, i) => s + (i.price * i.qty), 0);
+}
+
+// ============ F2 FLOWER PRODUCT ============
+function toggleF2Fulfillment(type) {
+  state.fulfillmentType = type;
+  document.getElementById('f2Delivery').classList.toggle('active', type === 'delivery');
+  document.getElementById('f2Pickup').classList.toggle('active', type === 'pickup');
+  document.getElementById('f2DeliveryFields').style.display = type === 'delivery' ? 'block' : 'none';
+  document.getElementById('f2PickupFields').style.display = type === 'pickup' ? 'block' : 'none';
+  if (type === 'pickup') buildCalendar('f2PickupCalendar');
+}
+
+function validateF2Zip() {
+  const zip = document.getElementById('f2Zip').value.trim();
+  const resultEl = document.getElementById('f2ZipResult');
+  if (zip.length < 5) { resultEl.style.display = 'none'; return; }
+  const match = ZIP_RATES[zip];
+  if (match) {
+    resultEl.className = 'zip-result success';
+    resultEl.innerHTML = 'Delivery available! Rate: <strong>$' + match.rate.toFixed(2) + '</strong> (' + match.area + ' area)';
+    state.selectedZip = zip;
+    state.deliveryRate = match.rate;
+    state.deliveryArea = match.area;
+  } else {
+    resultEl.className = 'zip-result error';
+    resultEl.innerHTML = "Sorry, we don't deliver to this area. Try in-store pickup or choose gifts that can be shipped.";
+  }
+  resultEl.style.display = 'block';
+}
+
+function updateCharCount() {
+  const val = document.getElementById('f2CardMsg').value;
+  document.getElementById('f2CharCount').textContent = val.length;
+  state.cardMessage = val;
+}
+
+function selectPickup(el, store) {
+  document.querySelectorAll('.pickup-option').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+  state.pickupStore = store;
+}
+
+function changeQty(prefix, delta) {
+  const el = document.getElementById(prefix + 'Qty');
+  let val = parseInt(el.textContent) + delta;
+  if (val < 1) val = 1;
+  el.textContent = val;
+  state[prefix + 'Qty'] = val;
+}
+
+function addFlowerToCart() {
+  state.cardMessage = document.getElementById('f2CardMsg')?.value || '';
+  state.deliveryInstructions = document.getElementById('f2DeliveryInstr')?.value || '';
+  addToCart({
+    id: 'blooming-bliss',
+    name: 'Blooming Bliss Bouquet',
+    price: 64.99,
+    qty: state.f2Qty,
+    type: 'flower',
+    image: 'https://image.floranext.com/instances/rhinestonesandrosesfloraldesign_com/catalog/product/f/l/floral_products-9_1.png.webp'
+  });
+}
+
+function addGiftToCart(id, name, price, image) {
+  addToCart({ id, name, price, qty: state.f3Qty, type: 'gift', image });
+}
+
+function quickAddGift(id, name, price, image) {
+  addToCart({ id, name, price, qty: 1, type: 'gift', image });
+}
+
+// ============ CALENDAR ============
+function buildCalendar(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const blocked = [5, 6, 12, 19, 20, 26]; // Sundays + staff-blocked
+  const today = 3; // April 3
+  const selectedDay = 4;
+  const daysInMonth = 30;
+  const startDay = 3; // April 1, 2026 is Wednesday (0=Sun, 3=Wed)
+
+  let html = '<div class="calendar-header"><h4>April 2026</h4></div>';
+  html += '<div class="calendar-grid">';
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d => {
+    html += '<div class="calendar-day-name">' + d + '</div>';
+  });
+  for (let i = 0; i < startDay; i++) {
+    html += '<div class="calendar-day empty"></div>';
+  }
+  for (let d = 1; d <= daysInMonth; d++) {
+    let cls = 'calendar-day';
+    if (blocked.includes(d)) cls += ' disabled';
+    else if (d === selectedDay) cls += ' selected';
+    if (d === today) cls += ' today';
+    if (d < today && !blocked.includes(d)) cls += ' disabled';
+    html += '<div class="' + cls + '" onclick="selectCalDay(this,' + d + ')">' + d + '</div>';
+  }
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function selectCalDay(el, day) {
+  if (el.classList.contains('disabled') || el.classList.contains('empty')) return;
+  el.closest('.calendar-grid').querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+  el.classList.add('selected');
+  state.selectedDate = '2026-04-' + String(day).padStart(2, '0');
+}
+
+// ============ RENDER CARTS ============
+function renderCartItems(items, containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = items.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-img"><img src="${item.image}" alt="${item.name}"></div>
+      <div class="cart-item-info">
+        <h4>${item.name}</h4>
+        <span class="badge ${item.type === 'flower' ? 'badge-flower' : 'badge-gift'}">${item.type === 'flower' ? 'Fresh Flowers' : 'Gift'}</span>
+      </div>
+      <div class="qty-stepper">
+        <button onclick="cartChangeQty('${item.id}', -1)">−</button>
+        <span class="qty-value">${item.qty}</span>
+        <button onclick="cartChangeQty('${item.id}', 1)">+</button>
+      </div>
+      <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+      <div class="cart-item-remove" onclick="removeFromCart('${item.id}')">×</div>
+    </div>
+  `).join('');
+}
+
+function cartChangeQty(id, delta) {
+  const item = state.cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty < 1) item.qty = 1;
+  updateCartBadge();
+  const type = getCartType();
+  if (type === 'mixed') renderMixedCart();
+  else if (type === 'flowers-only') renderFlowerCart();
+  else renderGiftCart();
+}
+
+function renderGiftCart() {
+  const gifts = state.cart.filter(i => i.type !== 'flower');
+  document.getElementById('f4Count').textContent = gifts.reduce((s,i) => s+i.qty, 0);
+  renderCartItems(gifts, 'f4Items');
+  const sub = gifts.reduce((s, i) => s + i.price * i.qty, 0);
+  const shipping = state.giftDelivery === 'ship' ? 7.99 : state.giftDelivery === 'local' ? state.deliveryRate : 0;
+  const total = sub + shipping;
+  document.getElementById('f4Summary').innerHTML = `
+    <div class="summary-row"><span>Subtotal</span><span>$${sub.toFixed(2)}</span></div>
+    <div class="summary-row"><span>${state.giftDelivery === 'ship' ? 'Shipping' : state.giftDelivery === 'local' ? 'Local Delivery' : 'Pickup'}</span><span>${shipping > 0 ? '$' + shipping.toFixed(2) : 'Free'}</span></div>
+    <div class="summary-row total"><span>Estimated Total</span><span>$${total.toFixed(2)}</span></div>
+  `;
+}
+
+function selectGiftDelivery(el, type) {
+  state.giftDelivery = type;
+  document.querySelectorAll('#f4Items ~ .delivery-options .delivery-option, [data-page="cart-gifts"] .delivery-option').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+  renderGiftCart();
+}
+
+function renderFlowerCart() {
+  const flowers = state.cart.filter(i => i.type === 'flower');
+  document.getElementById('f5Count').textContent = flowers.reduce((s,i) => s+i.qty, 0);
+  renderCartItems(flowers, 'f5Items');
+  const sub = flowers.reduce((s, i) => s + i.price * i.qty, 0);
+  document.getElementById('f5DeliveryPreview').innerHTML = `
+    <h4>Delivery Details</h4>
+    <div class="delivery-preview-row"><span class="label">Delivery Type</span><span class="value">${state.fulfillmentType === 'delivery' ? 'Local Delivery' : 'In-Store Pickup'}</span></div>
+    ${state.fulfillmentType === 'delivery' ? `<div class="delivery-preview-row"><span class="label">Recipient ZIP</span><span class="value">${state.selectedZip}</span></div>` : ''}
+    <div class="delivery-preview-row"><span class="label">Delivery Date</span><span class="value">${formatDate(state.selectedDate)}</span></div>
+    ${state.cardMessage ? '<div class="card-message-preview">"' + state.cardMessage + '"</div>' : ''}
+  `;
+  const delivery = state.fulfillmentType === 'delivery' ? state.deliveryRate : 0;
+  document.getElementById('f5Summary').innerHTML = `
+    <div class="summary-row"><span>Subtotal</span><span>$${sub.toFixed(2)}</span></div>
+    <div class="summary-row"><span>${state.fulfillmentType === 'delivery' ? 'Local Delivery (' + state.selectedZip + ')' : 'Pickup'}</span><span>${delivery > 0 ? '$' + delivery.toFixed(2) : 'Free'}</span></div>
+    <div class="summary-row total"><span>Estimated Total</span><span>$${(sub + delivery).toFixed(2)}</span></div>
+  `;
+}
+
+function renderMixedCart() {
+  const allItems = state.cart;
+  document.getElementById('f6Count').textContent = allItems.reduce((s,i) => s+i.qty, 0);
+  renderCartItems(allItems, 'f6Items');
+  renderMixedSummary();
+  renderMixedDeliveryPreview();
+}
+
+function selectMixedFulfillment(choice) {
+  state.fulfillmentChoice = choice;
+  document.getElementById('choiceTogether').classList.toggle('active', choice === 'together');
+  document.getElementById('choiceSplit').classList.toggle('active', choice === 'split');
+  renderMixedSummary();
+  renderMixedDeliveryPreview();
+}
+
+function renderMixedSummary() {
+  const sub = getCartSubtotal();
+  const deliveryRate = state.deliveryRate;
+  let html = '';
+  if (state.fulfillmentChoice === 'together') {
+    const total = sub + deliveryRate;
+    html = `
+      <div class="summary-row"><span>Subtotal</span><span>$${sub.toFixed(2)}</span></div>
+      <div class="summary-row"><span>Local Delivery (${state.selectedZip})</span><span>$${deliveryRate.toFixed(2)}</span></div>
+      <div class="summary-row total"><span>Estimated Total</span><span>$${total.toFixed(2)}</span></div>
+    `;
+  } else {
+    const total = sub + deliveryRate + 7.99;
+    html = `
+      <div class="summary-row"><span>Subtotal</span><span>$${sub.toFixed(2)}</span></div>
+      <div class="summary-row"><span>Gift Shipping</span><span>$7.99</span></div>
+      <div class="summary-row"><span>Flower Delivery (${state.selectedZip})</span><span>$${deliveryRate.toFixed(2)}</span></div>
+      <div class="summary-row total"><span>Estimated Total</span><span>$${(total).toFixed(2)}</span></div>
+    `;
+  }
+  document.getElementById('f6Summary').innerHTML = html;
+}
+
+function renderMixedDeliveryPreview() {
+  const el = document.getElementById('f6DeliveryPreview');
+  if (state.fulfillmentChoice === 'together') {
+    el.innerHTML = `
+      <h4>Delivery Details</h4>
+      <div class="delivery-preview-row"><span class="label">Recipient ZIP</span><span class="value">${state.selectedZip}</span></div>
+      <div class="delivery-preview-row"><span class="label">Delivery Date</span><span class="value">${formatDate(state.selectedDate)}</span></div>
+      ${state.cardMessage ? '<div class="card-message-preview">"' + state.cardMessage + '"</div>' : ''}
+    `;
+  } else {
+    el.innerHTML = `
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <h4>Flowers — Local Delivery</h4>
+          <div class="delivery-preview-row"><span class="label">ZIP</span><span class="value">${state.selectedZip}</span></div>
+          <div class="delivery-preview-row"><span class="label">Date</span><span class="value">${formatDate(state.selectedDate)}</span></div>
+          ${state.cardMessage ? '<div class="card-message-preview" style="margin-top:8px;">"' + state.cardMessage + '"</div>' : ''}
+        </div>
+        <div>
+          <h4>Gifts — Ship To</h4>
+          <div style="font-size:13px;color:var(--text-light);margin-top:8px;">Shipping address entered at checkout</div>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Standard shipping: $7.99 (3–5 days)</div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function goToMixedCheckout() {
+  if (state.fulfillmentChoice === 'together') navigateTo('checkout-mixed-together');
+  else navigateTo('checkout-mixed-split');
+}
+
+function renderGiftCheckout() {
+  const gifts = state.cart.filter(i => i.type !== 'flower');
+  const container = document.getElementById('f7OrderItems');
+  if (!container) return;
+  container.innerHTML = gifts.map(item => `
+    <div class="order-item">
+      <div class="order-item-img"><img src="${item.image}" alt=""></div>
+      <div class="order-item-info"><h5>${item.name}</h5><div class="meta">Qty: ${item.qty}</div></div>
+      <div class="order-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+    </div>
+  `).join('');
+  const sub = gifts.reduce((s,i) => s + i.price * i.qty, 0);
+  const tax = +(sub * 0.08).toFixed(2);
+  const total = sub + 7.99 + tax;
+  document.getElementById('f7Sub').textContent = '$' + sub.toFixed(2);
+  document.getElementById('f7Total').textContent = '$' + total.toFixed(2);
+  document.getElementById('f7PlaceOrder').textContent = 'Complete Order — $' + total.toFixed(2);
+}
+
+// ============ UTILITIES ============
+function formatDate(dateStr) {
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const d = new Date(dateStr + 'T12:00:00');
+  return days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
+
+function resetAndGoHome() {
+  state.cart = [];
+  updateCartBadge();
+  navigateTo('homepage');
+}
+
+// ============ INIT ============
+document.addEventListener('DOMContentLoaded', function() {
+  buildCalendar('f2Calendar');
+  updateCartBadge();
+});
+</script>
+
+</body>
+</html>
