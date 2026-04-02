@@ -1133,6 +1133,75 @@ textarea { resize: vertical; min-height: 80px; }
   color: var(--text);
 }
 
+/* ---- DELIVERY DETAILS CARD (F6 Redesign) ---- */
+.delivery-details-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-top: 20px;
+}
+.delivery-details-card h4 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  color: var(--dark);
+}
+.delivery-details-card .form-group {
+  margin-bottom: 18px;
+}
+.delivery-details-card .form-group:last-child {
+  margin-bottom: 0;
+}
+.zip-result.out-of-range {
+  background: #FFF8E7;
+  color: #8B6914;
+  border: 1px solid #F0DCA0;
+}
+.card-message-input {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--pink-primary);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text);
+  resize: vertical;
+  transition: border-color var(--transition);
+  box-sizing: border-box;
+}
+.card-message-input:focus {
+  outline: none;
+  border-color: var(--pink-medium);
+  border-left-color: var(--pink-primary);
+}
+.card-message-input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+.info-banner {
+  background: var(--pink-light);
+  border: 1px solid var(--pink-medium);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.6;
+  margin-top: 20px;
+}
+.info-banner .banner-icon {
+  margin-right: 8px;
+}
+.summary-row.note {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 /* ---- PICKUP OPTIONS ---- */
 .pickup-options {
   display: grid;
@@ -1806,29 +1875,33 @@ textarea { resize: vertical; min-height: 80px; }
       <h2>Your Cart (<span id="f6Count">2</span> items)</h2>
       <div id="f6Items"></div>
 
-      <!-- FULFILLMENT DECISION -->
-      <div class="fulfillment-decision">
-        <h3>How would you like your order fulfilled?</h3>
-        <p>Your cart contains fresh flowers, which can only be delivered locally or picked up in store.</p>
-        <div class="fulfillment-choices">
-          <div class="fulfillment-choice active" id="choiceTogether" onclick="selectMixedFulfillment('together')">
-            <div class="choice-icon"></div>
-            <span class="choice-label">Deliver Everything Together</span>
-            <span class="choice-desc">All items delivered locally or available for in-store pickup. Flowers and gifts arrive together.</span>
-            <span class="choice-fee">Delivery fee based on recipient ZIP code</span>
-          </div>
-          <div class="fulfillment-choice" id="choiceSplit" onclick="selectMixedFulfillment('split')">
-            <div class="choice-icon"></div>
-            <span class="choice-label">Ship Gifts, Deliver Flowers Separately</span>
-            <span class="choice-desc">We'll ship your gifts nationwide and deliver your flowers locally. Two separate deliveries, one checkout.</span>
-            <span class="choice-fee">Gift shipping: $7.99 + Flower delivery based on ZIP</span>
-          </div>
+      <!-- DELIVERY DETAILS -->
+      <div class="delivery-details-card" id="f6DeliveryDetails">
+        <h4>Delivery Details</h4>
+
+        <div class="form-group">
+          <label for="f6Zip">Recipient ZIP Code</label>
+          <input type="text" id="f6Zip" maxlength="5" inputmode="numeric" pattern="[0-9]*" placeholder="Enter ZIP code" oninput="validateF6Zip()" style="width:180px;">
+          <div class="form-hint">We deliver fresh flowers within a 20-mile radius of our stores. Enter your recipient's ZIP to confirm availability.</div>
+          <div class="zip-result" id="f6ZipResult" style="display:none;"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="f6Date">Delivery Date</label>
+          <input type="date" id="f6Date" onchange="state.selectedDate = this.value" style="width:220px;">
+        </div>
+
+        <div class="form-group">
+          <label for="f6CardMsg">Card Message (optional)</label>
+          <textarea id="f6CardMsg" class="card-message-input" placeholder="Write a personal message to include with your flowers..." oninput="state.cardMessage = this.value"></textarea>
         </div>
       </div>
 
-      <div class="delivery-preview" id="f6DeliveryPreview"></div>
-
       <div class="cart-summary" id="f6Summary"></div>
+
+      <div class="info-banner">
+        Your fresh flowers will be delivered locally and your gifts will ship separately. You'll see delivery options and costs for each at checkout.
+      </div>
 
       <div style="margin-top:20px;">
         <button class="btn btn-primary btn-lg" id="f6CheckoutBtn" onclick="goToMixedCheckout()">Proceed to Checkout</button>
@@ -2481,71 +2554,46 @@ function renderMixedCart() {
   document.getElementById('f6Count').textContent = allItems.reduce((s,i) => s+i.qty, 0);
   renderCartItems(allItems, 'f6Items');
   renderMixedSummary();
-  renderMixedDeliveryPreview();
+  // Initialize delivery details form from state
+  const zipInput = document.getElementById('f6Zip');
+  const dateInput = document.getElementById('f6Date');
+  const msgInput = document.getElementById('f6CardMsg');
+  if (zipInput && state.selectedZip) { zipInput.value = state.selectedZip; validateF6Zip(); }
+  if (dateInput && state.selectedDate) dateInput.value = state.selectedDate;
+  if (msgInput && state.cardMessage) msgInput.value = state.cardMessage;
 }
 
-function selectMixedFulfillment(choice) {
-  state.fulfillmentChoice = choice;
-  document.getElementById('choiceTogether').classList.toggle('active', choice === 'together');
-  document.getElementById('choiceSplit').classList.toggle('active', choice === 'split');
-  renderMixedSummary();
-  renderMixedDeliveryPreview();
+function validateF6Zip() {
+  const zip = document.getElementById('f6Zip').value.trim();
+  const resultEl = document.getElementById('f6ZipResult');
+  if (zip.length < 5) { resultEl.style.display = 'none'; return; }
+  const match = ZIP_RATES[zip];
+  if (match) {
+    resultEl.className = 'zip-result success';
+    resultEl.innerHTML = '&#x2713; Local delivery available &mdash; ' + match.area + ' location';
+    state.selectedZip = zip;
+    state.deliveryRate = match.rate;
+    state.deliveryArea = match.area;
+  } else {
+    resultEl.className = 'zip-result out-of-range';
+    resultEl.innerHTML = 'This ZIP is outside our delivery area. Fresh flowers are available for in-store pickup, or you can remove them and ship gifts only.';
+  }
+  resultEl.style.display = 'block';
 }
 
 function renderMixedSummary() {
   const sub = getCartSubtotal();
-  const deliveryRate = state.deliveryRate;
-  let html = '';
-  if (state.fulfillmentChoice === 'together') {
-    const total = sub + deliveryRate;
-    html = `
-      <div class="summary-row"><span>Subtotal</span><span>$${sub.toFixed(2)}</span></div>
-      <div class="summary-row"><span>Local Delivery (${state.selectedZip})</span><span>$${deliveryRate.toFixed(2)}</span></div>
-      <div class="summary-row total"><span>Estimated Total</span><span>$${total.toFixed(2)}</span></div>
-    `;
-  } else {
-    const total = sub + deliveryRate + 7.99;
-    html = `
-      <div class="summary-row"><span>Subtotal</span><span>$${sub.toFixed(2)}</span></div>
-      <div class="summary-row"><span>Gift Shipping</span><span>$7.99</span></div>
-      <div class="summary-row"><span>Flower Delivery (${state.selectedZip})</span><span>$${deliveryRate.toFixed(2)}</span></div>
-      <div class="summary-row total"><span>Estimated Total</span><span>$${(total).toFixed(2)}</span></div>
-    `;
-  }
+  const html = `
+    <div class="summary-row"><span>Subtotal</span><span>$${sub.toFixed(2)}</span></div>
+    <div class="summary-row note"><span>Shipping &amp; delivery calculated at checkout</span><span></span></div>
+    <div class="summary-row total"><span>Estimated Total</span><span>$${sub.toFixed(2)}</span></div>
+  `;
   document.getElementById('f6Summary').innerHTML = html;
 }
 
-function renderMixedDeliveryPreview() {
-  const el = document.getElementById('f6DeliveryPreview');
-  if (state.fulfillmentChoice === 'together') {
-    el.innerHTML = `
-      <h4>Delivery Details</h4>
-      <div class="delivery-preview-row"><span class="label">Recipient ZIP</span><span class="value">${state.selectedZip}</span></div>
-      <div class="delivery-preview-row"><span class="label">Delivery Date</span><span class="value">${formatDate(state.selectedDate)}</span></div>
-      ${state.cardMessage ? '<div class="card-message-preview">"' + state.cardMessage + '"</div>' : ''}
-    `;
-  } else {
-    el.innerHTML = `
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-        <div>
-          <h4>Flowers — Local Delivery</h4>
-          <div class="delivery-preview-row"><span class="label">ZIP</span><span class="value">${state.selectedZip}</span></div>
-          <div class="delivery-preview-row"><span class="label">Date</span><span class="value">${formatDate(state.selectedDate)}</span></div>
-          ${state.cardMessage ? '<div class="card-message-preview" style="margin-top:8px;">"' + state.cardMessage + '"</div>' : ''}
-        </div>
-        <div>
-          <h4>Gifts — Ship To</h4>
-          <div style="font-size:13px;color:var(--text-light);margin-top:8px;">Shipping address entered at checkout</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Standard shipping: $7.99 (3–5 days)</div>
-        </div>
-      </div>
-    `;
-  }
-}
-
 function goToMixedCheckout() {
-  if (state.fulfillmentChoice === 'together') navigateTo('checkout-mixed-together');
-  else navigateTo('checkout-mixed-split');
+  // Shopify handles the split automatically — route to the split checkout flow
+  navigateTo('checkout-mixed-split');
 }
 
 function renderGiftCheckout() {
